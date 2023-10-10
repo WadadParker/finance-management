@@ -4,7 +4,9 @@ import React, { useEffect } from 'react'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchIncome,addNewIncome } from "../../actions";
+
 import { FilterBar } from "../../components/filterBar/FilterBar";
+import { IncomeExpenseForm } from "../../components/form/IncomeExpenseForm";
 
 export const Income = () => {
   const income = useSelector((state)=>state.income)
@@ -20,6 +22,7 @@ export const Income = () => {
     <div>
       <h1>Income</h1>
       <FilterBar categories={income}/>
+      <IncomeExpenseForm type="Income" />
     </div>
   )
 }

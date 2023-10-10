@@ -8,7 +8,7 @@ export const FilterBar = ({categories}) => {
         <legend>
             Filters
         </legend>
-        <input type="checkbox" id="sort"/>
+        <input className={styles.input} type="checkbox" id="sort"/>
         <label htmlFor="sort">Sort by Amount</label>
         <select>
             <option value="">All Categories</option>
