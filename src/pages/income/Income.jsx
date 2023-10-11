@@ -29,7 +29,6 @@ export const Income = () => {
   }
 
   const filteredIncome = applyFilters();
-  console.log(filter.sort);
 
   const formHandler=(newIncome)=>
   {
