@@ -1,5 +1,5 @@
 import styles from "./income.module.css";
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -10,9 +10,29 @@ import { IncomeExpenseForm } from "../../components/form/IncomeExpenseForm";
 import { DataTable } from "../../components/table/DataTable";
 
 export const Income = () => {
+
+  const [filter,setFilter]=useState({sort:false,category:""});
+
   const income = useSelector((state)=>state.income)
   const dispatch = useDispatch();
-  console.log(income);
+
+  const applyFilters=()=>
+  {
+    if(filter.sort)
+    {
+      const sortedIncome =  [...income]?.sort((a,b)=>a.amount-b.amount)
+      return sortedIncome?.filter(({category})=>category.includes(filter.category));
+    }
+    return [...income]?.filter(({category})=>category.includes(filter.category));
+  }
+
+  const filteredIncome = applyFilters();
+  console.log(filter.sort);
+
+  const formHandler=(newIncome)=>
+  {
+    dispatch(addNewIncome(newIncome));
+  }
 
   useEffect(()=>
   {
@@ -22,10 +42,10 @@ export const Income = () => {
   return (
     <div className={styles[`main-container`]}>
       <h1>Income</h1>
-      <FilterBar categories={income}/>
+      <FilterBar categories={income} filter={filter} setFilter={setFilter}/>
       <section className={styles[`table-and-form`]}>
-        <DataTable list={income}/>
-        <IncomeExpenseForm type="Income" className={styles.form}/>
+        <DataTable list={filteredIncome}/>
+        <IncomeExpenseForm type="Income" formHandler={formHandler}/>
       </section>
     </div>
   )
