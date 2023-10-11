@@ -1,0 +1,28 @@
+.heading {
+    margin-top: 2rem;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 2rem;
+}
+.section {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 1em 2em;
+    margin: 1em;
+    display: grid;
+    gap: 1em;
+    place-content: center;
+    place-items: center;
+    font-size: 1.2rem;
+}
+.savings{
+    color: rgb(76, 242, 76);
+}
+.expense{
+    color: rgb(235, 41, 41);
+}
+.income {
+    color: var(--primary-color);
+}
