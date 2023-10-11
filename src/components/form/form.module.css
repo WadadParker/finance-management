@@ -3,6 +3,11 @@
     width: 20rem;
     gap: 1em;
     text-align: center;
+    align-self: center;
+    margin-top: -25%;
+}
+.form-header {
+    margin: 0;
 }
 .form input, .form textarea {
     padding: 0.5em;
